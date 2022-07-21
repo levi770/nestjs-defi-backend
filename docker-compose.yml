@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+    db:
+        image: postgres:12-alpine
+        ports:
+            - "5432:5432"
+        environment:
+            - POSTGRES_DB=DB
+            - POSTGRES_USER=USER
+            - POSTGRES_PASSWORD=PASSWORD
+            - PGGSSENCMODE=disable
+        volumes:
+            - "dbdata:/var/lib/postgresql/data"
+    cache:
+        image: redis:6.2-alpine
+        restart: always
+        ports:
+        - '6379:6379'
+        command: redis-server --save 20 1 --loglevel warning
+        volumes: 
+        - cache:/data
+volumes:
+    dbdata:
+    cache:
