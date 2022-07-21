@@ -92,3 +92,5 @@ To launch this project:
 3. run `nest build`
 4. run `docker-compose up`
 5. run `pm2 start pm2.config.js`
+
+Swagger API docs will be available on [localhost:5000/docs](http://localhost:5000/docs)
